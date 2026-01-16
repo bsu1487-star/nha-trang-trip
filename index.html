@@ -182,15 +182,16 @@
     }
     .poi{
       border:1px solid var(--border);
-      background: rgba(18,26,43,.7);
+      background:#ffffff;
       border-radius: 14px;
-      padding:12px;
+      padding:14px 14px;
       display:flex;
       flex-direction:column;
       gap:6px;
+      box-shadow: var(--shadow);
     }
     .poi .top{display:flex; justify-content:space-between; gap:10px; align-items:flex-start}
-    .poi .nm{font-weight:800}
+    .poi .nm{font-weight:800;color:var(--text);}
     .poi .tag{font-size:12px; color:var(--muted)}
     .poi button{
       margin-top:6px;
@@ -261,7 +262,7 @@
   <header>
     <div class="title">
       <h1>나트랑 4박 6일 일정</h1>
-      <div class="badge"><strong>기간</strong> 2026-02-22(일) 22:00 도착 ~ 2026-02-26(목) 23:00 출발</div>
+      <div class="badge"><strong>기간</strong> 2026-02-22(일) 22:20 도착 ~ 2026-02-26(목) 23:20 출발</div>
     </div>
     <div class="subtitle">인원: 어르신 2(70대) · 성인 2(30대) · 유아 1(38개월). 무리 없는 동선(오전/오후 1코어 + 휴식) 기준.</div>
     <div class="badges">
@@ -278,6 +279,7 @@
       <div class="tab" data-target="d3">2/24(화)</div>
       <div class="tab" data-target="d4">2/25(수)</div>
       <div class="tab" data-target="d5">2/26(목) 출발</div>
+      <div class="tab" data-target="transport">교통/이동</div>
       <div class="tab" data-target="maptab">지도/장소</div>
     </div>
 
@@ -652,11 +654,71 @@
     </section>
 
     <!-- Map Tab -->
+    <section class="panel" id="transport">
+      <div class="card">
+        <div class="hd"><h2>항공편 · 주요 이동수단</h2><div class="note">실제 탑승 기준 / 가족·유아 동선 고려</div></div>
+        <div class="bd">
+          <div class="card" style="box-shadow:none; margin-bottom:14px">
+            <div class="hd"><h2>국제선 항공편</h2></div>
+            <div class="bd">
+              <table style="width:100%; border-collapse:collapse; font-size:13px">
+                <thead>
+                  <tr style="background:#f5f7fb">
+                    <th style="padding:8px; border:1px solid var(--border)">출발일자</th>
+                    <th style="padding:8px; border:1px solid var(--border)">구간</th>
+                    <th style="padding:8px; border:1px solid var(--border)">시간</th>
+                    <th style="padding:8px; border:1px solid var(--border)">편명</th>
+                    <th style="padding:8px; border:1px solid var(--border)">좌석</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="padding:8px; border:1px solid var(--border)">2026-02-22(일)</td>
+                    <td style="padding:8px; border:1px solid var(--border)">서울(인천) → 나트랑</td>
+                    <td style="padding:8px; border:1px solid var(--border)">19:00 → 22:20</td>
+                    <td style="padding:8px; border:1px solid var(--border)">BX 787</td>
+                    <td style="padding:8px; border:1px solid var(--border)">5석</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:8px; border:1px solid var(--border)">2026-02-26(목)</td>
+                    <td style="padding:8px; border:1px solid var(--border)">나트랑 → 서울(인천)</td>
+                    <td style="padding:8px; border:1px solid var(--border)">23:20 → 06:55(+1)</td>
+                    <td style="padding:8px; border:1px solid var(--border)">BX 788</td>
+                    <td style="padding:8px; border:1px solid var(--border)">5석</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card" style="box-shadow:none">
+            <div class="hd"><h2>현지 이동수단 가이드</h2></div>
+            <div class="bd">
+              <ul class="list">
+                <li><strong>공항 ↔ 숙소</strong>: 전용차량 또는 Grab SUV 권장 (유아 카시트 필요 시 사전예약)</li>
+                <li><strong>시내 이동</strong>: Grab 택시 중심, 단거리 위주 운영</li>
+                <li><strong>VinWonders</strong>: 케이블카 또는 페리 (유모차 동반 가능 여부 현장 확인)</li>
+                <li><strong>머드스파/외곽</strong>: 왕복 차량 포함 패키지 이용 시 체력 소모 최소화</li>
+              </ul>
+              <div class="callout">
+                <strong>운영 팁</strong>
+                <ul class="list">
+                  <li>출발일(2/26) 밤 비행 → 오후 일정 최소화, 저녁은 공항 이동 중심</li>
+                  <li>어르신/유아 동반 시 오토바이 이동은 제외</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="panel" id="maptab">
       <div class="card">
         <div class="hd"><h2>지도/장소(마커 표시)</h2><div class="note">OpenStreetMap 기반(무료). 일부 장소는 자동 지오코딩으로 좌표를 잡습니다.</div></div>
         <div class="bd">
           <div class="toolbar">
+            <div id="routeSummary" class="pill" style="font-weight:700"></div>
             <input id="search" type="search" placeholder="장소 검색 (예: Po Nagar, Market, Beach)" />
             <select id="filter">
               <option value="ALL">전체</option>
@@ -739,6 +801,7 @@
     }).addTo(map);
 
     const markers = new Map();
+    const routes = new Map();
 
     async function geocodeNominatim(query){
       // Nominatim usage policy: 과도한 요청 방지(캐시/최소 호출)
@@ -847,6 +910,7 @@
         }
       }
       renderPOIList(filtered);
+      drawRoutes(filtered);
     }
 
     function fitAll(){
@@ -859,6 +923,97 @@
         const bounds = L.latLngBounds(ll);
         map.fitBounds(bounds.pad(0.22));
       }
+    }
+
+    // ===== Route (Polyline) Data =====
+    // ===== Route (Polyline) Data with time & mode =====
+    const ROUTES = {
+      DAY_23: [
+        {from:'tran_phu_beach', to:'long_son', time:'09:30', mode:'car'},
+        {from:'long_son', to:'cathedral', time:'16:00', mode:'walk'},
+        {from:'cathedral', to:'night_market', time:'18:30', mode:'car'}
+      ],
+      DAY_24: [
+        {from:'vinpearl_cable', to:'vinwonders', time:'09:00', mode:'cable'}
+      ],
+      DAY_25: [
+        {from:'i_resort', to:'po_nagar', time:'16:00', mode:'car'},
+        {from:'po_nagar', to:'hon_chong', time:'17:00', mode:'car'}
+      ],
+      DAY_26: [
+        {from:'dam_market', to:'cam_ranh_airport', time:'18:00', mode:'car'}
+      ]
+    };
+
+    function drawRoutes(filtered){
+      // clear existing routes & labels
+      for(const obj of routes.values()){
+        if(obj.poly) map.removeLayer(obj.poly);
+        if(obj.label) map.removeLayer(obj.label);
+      }
+      routes.clear();
+
+      let totalDist = 0;
+      let totalMin = 0;
+
+      const days = new Set(filtered.map(p=>p.day));
+      days.forEach(day=>{
+        if(!ROUTES[day]) return;
+        ROUTES[day].forEach(seg=>{
+          const m1 = markers.get(seg.from);
+          const m2 = markers.get(seg.to);
+          if(!m1 || !m2) return;
+
+          const latlngs = [m1.getLatLng(), m2.getLatLng()];
+          const colorMap = { walk:'#1fbf8f', car:'#2f6bff', cable:'#8b5cf6' };
+          const poly = L.polyline(latlngs, {
+            color: colorMap[seg.mode] || '#2f6bff',
+            weight: 5,
+            opacity: 0.85
+          }).addTo(map);
+
+          const dist = map.distance(latlngs[0], latlngs[1]); // m
+          const speedMap = { walk:4, car:30, cable:20 };
+          const minutes = Math.round((dist/1000)/(speedMap[seg.mode]||30)*60);
+
+          totalDist += dist;
+          totalMin += minutes;
+
+          const mid = L.latLng(
+            (latlngs[0].lat + latlngs[1].lat)/2,
+            (latlngs[0].lng + latlngs[1].lng)/2
+          );
+
+          const label = L.marker(mid, {
+            interactive:false,
+            icon: L.divIcon({
+              className:'',
+              html:`<div style="background:#fff;border:1px solid rgba(0,0,0,.15);border-radius:10px;padding:4px 8px;font-size:11px;white-space:nowrap">${seg.time} · ${minutes}분</div>`
+            })
+          }).addTo(map);
+
+          routes.set(`${day}-${seg.from}-${seg.to}`, {poly, label});
+        });
+      });
+
+      // summary box
+      const sumBox = document.getElementById('routeSummary');
+      if(sumBox){
+        sumBox.innerHTML = `총 이동거리 ${(totalDist/1000).toFixed(1)} km · 총 이동시간 ${totalMin} 분`;
+      }
+    }
+      });
+    });
+        if(latlngs.length >= 2){
+          const poly = L.polyline(latlngs, {
+            color: '#2f6bff',
+            weight: 4,
+            opacity: 0.75,
+            dashArray: '6 6'
+          }).addTo(map);
+          routes.set(day, poly);
+        }
+      });
     }
 
     // init
