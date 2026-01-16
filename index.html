@@ -756,15 +756,27 @@
     function activateTab(targetId){
       tabs.forEach(t => t.classList.toggle('active', t.dataset.target === targetId));
       panels.forEach(p => p.classList.toggle('active', p.id === targetId));
+
+      // 날짜 탭 클릭 시 지도 필터 연동
+      const dayMap = { d2:'DAY_23', d3:'DAY_24', d4:'DAY_25', d5:'DAY_26' };
+      if(dayMap[targetId]){
+        const sel = document.getElementById('filter');
+        if(sel){ sel.value = dayMap[targetId]; refresh(); fitAll(); }
+      }
+
       if(targetId === 'maptab'){
-        setTimeout(() => { if(window._map) window._map.invalidateSize(); }, 120);
+        setTimeout(() => { if(window._map) window._map.invalidateSize(); fitAll(); }, 120);
       }
     }
+
     tabs.forEach(t => t.addEventListener('click', () => activateTab(t.dataset.target)));
 
     // ===== POI Data =====
     // lat/lng가 없으면 addressQuery로 Nominatim(OpenStreetMap)에서 좌표를 자동 검색합니다.
     const POIS = [
+      // 2/22 (출국)
+      {id:'icn_airport', name:'Incheon International Airport (ICN)', category:'Airport', day:'DAY_22', lat:37.4602, lng:126.4407, note:'19:00 BX787 출발 · 국제선 터미널'},
+
       // 2/23
       {id:'tran_phu_beach', name:'Tran Phu Beach', category:'Beach', day:'DAY_23', lat:12.2387911, lng:109.1967488, note:'해변 산책/가벼운 일광욕(오전 권장)'} ,
       {id:'long_son', name:'Long Son Pagoda', category:'Sight', day:'DAY_23', lat:12.2514917, lng:109.18055, note:'차량 하차관광 + 짧은 동선(계단 주의)'} ,
@@ -928,6 +940,9 @@
     // ===== Route (Polyline) Data =====
     // ===== Route (Polyline) Data with time & mode =====
     const ROUTES = {
+      DAY_22: [
+        {from:'icn_airport', to:'cam_ranh_airport', time:'19:00', mode:'plane'}
+      ],
       DAY_23: [
         {from:'tran_phu_beach', to:'long_son', time:'09:30', mode:'car'},
         {from:'long_son', to:'cathedral', time:'16:00', mode:'walk'},
@@ -965,7 +980,7 @@
           if(!m1 || !m2) return;
 
           const latlngs = [m1.getLatLng(), m2.getLatLng()];
-          const colorMap = { walk:'#1fbf8f', car:'#2f6bff', cable:'#8b5cf6' };
+          const colorMap = { walk:'#1fbf8f', car:'#2f6bff', cable:'#8b5cf6', plane:'#ff9f1a' };
           const poly = L.polyline(latlngs, {
             color: colorMap[seg.mode] || '#2f6bff',
             weight: 5,
