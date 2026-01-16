@@ -758,7 +758,7 @@
       panels.forEach(p => p.classList.toggle('active', p.id === targetId));
 
       // 날짜 탭 클릭 시 지도 필터 연동
-      const dayMap = { d2:'DAY_23', d3:'DAY_24', d4:'DAY_25', d5:'DAY_26' };
+      const dayMap = { d1:'DAY_22', d2:'DAY_23', d3:'DAY_24', d4:'DAY_25', d5:'DAY_26' };
       if(dayMap[targetId]){
         const sel = document.getElementById('filter');
         if(sel){ sel.value = dayMap[targetId]; refresh(); fitAll(); }
@@ -961,7 +961,6 @@
     };
 
     function drawRoutes(filtered){
-      // clear existing routes & labels
       for(const obj of routes.values()){
         if(obj.poly) map.removeLayer(obj.poly);
         if(obj.label) map.removeLayer(obj.label);
@@ -987,8 +986,8 @@
             opacity: 0.85
           }).addTo(map);
 
-          const dist = map.distance(latlngs[0], latlngs[1]); // m
-          const speedMap = { walk:4, car:30, cable:20 };
+          const dist = map.distance(latlngs[0], latlngs[1]);
+          const speedMap = { walk:4, car:30, cable:20, plane:800 };
           const minutes = Math.round((dist/1000)/(speedMap[seg.mode]||30)*60);
 
           totalDist += dist;
@@ -1003,7 +1002,7 @@
             interactive:false,
             icon: L.divIcon({
               className:'',
-              html:`<div style="background:#fff;border:1px solid rgba(0,0,0,.15);border-radius:10px;padding:4px 8px;font-size:11px;white-space:nowrap">${seg.time} · ${minutes}분</div>`
+              html:`<div style=\"background:#fff;border:1px solid rgba(0,0,0,.15);border-radius:10px;padding:4px 8px;font-size:11px;white-space:nowrap\">${seg.time} · ${minutes}분</div>`
             })
           }).addTo(map);
 
@@ -1011,24 +1010,10 @@
         });
       });
 
-      // summary box
       const sumBox = document.getElementById('routeSummary');
       if(sumBox){
         sumBox.innerHTML = `총 이동거리 ${(totalDist/1000).toFixed(1)} km · 총 이동시간 ${totalMin} 분`;
       }
-    }
-      });
-    });
-        if(latlngs.length >= 2){
-          const poly = L.polyline(latlngs, {
-            color: '#2f6bff',
-            weight: 4,
-            opacity: 0.75,
-            dashArray: '6 6'
-          }).addTo(map);
-          routes.set(day, poly);
-        }
-      });
     }
 
     // init
