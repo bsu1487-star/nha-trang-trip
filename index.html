@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
+
+
   <style>
     :root{
       --bg:#f5f7fb;
@@ -95,6 +97,7 @@
       grid-template-columns: 1.15fr .85fr;
       gap:14px;
     }
+    .grid.one{grid-template-columns:1fr;}
     @media (max-width: 980px){
       .grid{grid-template-columns:1fr}
     }
@@ -274,6 +277,7 @@
 
   <main>
     <div class="tabs" id="tabs">
+      <div class="tab" data-target="timetable">시간표(테이블)</div>
       <div class="tab active" data-target="d1">2/22(일) 출국</div>
       <div class="tab" data-target="d2">2/23(월)</div>
       <div class="tab" data-target="d3">2/24(화)</div>
@@ -282,7 +286,81 @@
       <div class="tab" data-target="d6">2/27(금) 도착</div>
       <div class="tab" data-target="transport">교통/이동</div>
       <div class="tab" data-target="maptab">지도/장소</div>
+      <div class="tab" data-target="damprice">담시장 시세표</div>
     </div>
+
+    <!-- Timetable -->
+    <section class="panel" id="timetable">
+      <div class="card">
+        <div class="hd"><h2>시간표형 일정 (가로: 날짜 / 세로: 시간)</h2><div class="note">사용자 제공 원본 테이블 기준</div></div>
+        <div class="bd" style="overflow-x:auto">
+          <table style="border-collapse:collapse; min-width:900px; font-size:12.5px">
+            <thead>
+              <tr style="background:#f5f7fb">
+                <th style="border:1px solid var(--border); padding:6px">시간</th>
+                <th style="border:1px solid var(--border); padding:6px">2/22(일)</th>
+                <th style="border:1px solid var(--border); padding:6px">2/23(월)</th>
+                <th style="border:1px solid var(--border); padding:6px">2/24(화)</th>
+                <th style="border:1px solid var(--border); padding:6px">2/25(수)</th>
+                <th style="border:1px solid var(--border); padding:6px">2/26(목)</th>
+                <th style="border:1px solid var(--border); padding:6px">2/27(금)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td style="border:1px solid var(--border); padding:6px">06:00</td><td></td><td></td><td></td><td></td><td></td><td>도착 06:55</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:6px">08:00</td><td></td><td>레갈리아 호텔 조식</td><td>레갈리아 호텔 조식</td><td>알마 리조트 조식</td><td>알마 리조트 조식</td><td></td></tr>
+              <tr><td style="border:1px solid var(--border); padding:6px">10:00</td><td></td><td>담시장</td><td>포나가르 사원</td><td></td><td></td><td></td></tr>
+              <tr><td style="border:1px solid var(--border); padding:6px">12:00</td><td></td><td>반미판 / 과일가게</td><td>레갈리아 체크아웃<br>그릭 수블라키</td><td>반미/반세오</td><td>반미/반세오</td><td></td></tr>
+              <tr><td style="border:1px solid var(--border); padding:6px">14:00</td><td>문정동 출발 14:30</td><td>수영장</td><td>알마 체크인</td><td></td><td></td><td></td></tr>
+              <tr><td style="border:1px solid var(--border); padding:6px">15:00</td><td>헬렌 스파</td><td></td><td></td><td></td><td></td><td></td></tr>
+              <tr><td style="border:1px solid var(--border); padding:6px">16:00</td><td>인천 도착 16:00</td><td></td><td>시내 마사지</td><td>시내 마사지</td><td></td><td></td></tr>
+              <tr><td style="border:1px solid var(--border); padding:6px">18:00</td><td>공항 식사</td><td>목식당</td><td>깜란 차라푸드</td><td>Cam Lâm Food</td><td>레이트 체크아웃</td><td></td></tr>
+              <tr><td style="border:1px solid var(--border); padding:6px">19:00</td><td>비행기 출발 BX787</td><td></td><td></td><td></td><td></td><td></td></tr>
+              <tr><td style="border:1px solid var(--border); padding:6px">21:00</td><td></td><td></td><td></td><td></td><td>공항 도착 21:20</td><td></td></tr>
+              <tr><td style="border:1px solid var(--border); padding:6px">22:00</td><td>도착 22:20</td><td></td><td></td><td></td><td></td><td></td></tr>
+              <tr><td style="border:1px solid var(--border); padding:6px">23:00</td><td></td><td></td><td></td><td></td><td>비행기 출발 23:20</td><td></td></tr>
+                          <!-- 의류 – 일반 의류 및 패션 -->
+              <tr>
+                <td rowspan="10" style="border:1px solid var(--border); padding:8px; font-weight:700">의류 – 일반 의류 및 패션</td>
+                <td style="border:1px solid var(--border); padding:8px">원피스 (여성)</td>
+                <td style="border:1px solid var(--border); padding:8px; text-align:right">80,000</td>
+                <td style="border:1px solid var(--border); padding:8px; text-align:right">120,000</td>
+                <td style="border:1px solid var(--border); padding:8px">2025년 하반기 담시장 여행자 후기</td>
+              </tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">투피스(여성 세트업)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">80,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">150,000</td><td style="border:1px solid var(--border); padding:8px">120,000</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">민무늬 원피스</td><td style="border:1px solid var(--border); padding:8px; text-align:right">100,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">110,000</td><td style="border:1px solid var(--border); padding:8px">110,000</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">하와이안 상하의 세트</td><td style="border:1px solid var(--border); padding:8px; text-align:right">80,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">100,000</td><td style="border:1px solid var(--border); padding:8px">90,000</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">남성 티셔츠(일반)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">60,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">100,000</td><td style="border:1px solid var(--border); padding:8px">80,000</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">남성 반바지</td><td style="border:1px solid var(--border); padding:8px; text-align:right">50,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">80,000</td><td style="border:1px solid var(--border); padding:8px">60,000</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">티+반바지 세트</td><td style="border:1px solid var(--border); padding:8px; text-align:right">100,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">150,000</td><td style="border:1px solid var(--border); padding:8px">120,000</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">레깅스(여성)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">100,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">130,000</td><td style="border:1px solid var(--border); padding:8px">120,000</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">코끼리 반바지</td><td style="border:1px solid var(--border); padding:8px; text-align:right">50,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">70,000</td><td style="border:1px solid var(--border); padding:8px">60,000</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">코끼리 긴바지</td><td style="border:1px solid var(--border); padding:8px; text-align:right">60,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">80,000</td><td style="border:1px solid var(--border); padding:8px">70,000</td></tr>
+
+              <!-- 신발 및 기타 품목 (신발, 슬리퍼, 캐리어 등)</td>
+                <td style="border:1px solid var(--border); padding:8px">크록스 샌들 (기본형)</td>
+                <td style="border:1px solid var(--border); padding:8px; text-align:right">100,000</td>
+                <td style="border:1px solid var(--border); padding:8px; text-align:right">150,000</td>
+                <td style="border:1px solid var(--border); padding:8px">2025년 7월 실구매</td> -->
+              <tr>
+                <td rowspan="8" style="border:1px solid var(--border); padding:8px; font-weight:700">신발 및 기타 품목</td>
+                <td style="border:1px solid var(--border); padding:8px">크록스 샌들(기본)</td>
+                <td style="border:1px solid var(--border); padding:8px; text-align:right">100,000</td>
+                <td style="border:1px solid var(--border); padding:8px; text-align:right">150,000</td>
+                <td style="border:1px solid var(--border); padding:8px">120,000</td>
+              </tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">크록스 샌들(디자인)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">150,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">180,000</td><td style="border:1px solid var(--border); padding:8px">170,000</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">크록스 지비츠(12)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">40,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">50,000</td><td style="border:1px solid var(--border); padding:8px">50,000</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">슬리퍼(일반)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">50,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">120,000</td><td style="border:1px solid var(--border); padding:8px">85,000</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">나이키 운동화(짝퉁)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">300,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">400,000</td><td style="border:1px solid var(--border); padding:8px">350,000</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">캐리어 20인치</td><td style="border:1px solid var(--border); padding:8px; text-align:right">250,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">400,000</td><td style="border:1px solid var(--border); padding:8px">300,000</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">캐리어 24인치</td><td style="border:1px solid var(--border); padding:8px; text-align:right">350,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">450,000</td><td style="border:1px solid var(--border); padding:8px">380,000</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">캐리어 28인치</td><td style="border:1px solid var(--border); padding:8px; text-align:right">450,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">500,000</td><td style="border:1px solid var(--border); padding:8px">480,000</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
 
     <!-- Day 1 -->
     <section class="panel active" id="d1">
@@ -367,82 +445,19 @@
 
     <!-- Day 2 -->
     <section class="panel" id="d2">
-      <div class="grid">
+      <div class="grid one">
         <div class="card">
-          <div class="hd"><h2>2/23(월) — 시내 적응 + 해변 산책 + 야시장</h2><div class="note">강도: 하</div></div>
+          <div class="hd"><h2>2/23(월) — 시내 관광 + 시장 + 마사지</h2><div class="note">시간표 기준 반영</div></div>
           <div class="bd">
             <div class="timeline">
-              <div class="item">
-                <div class="row">
-                  <div class="time">09:30</div>
-                  <div class="desc">
-                    <div class="name">Tran Phu 해변/산책(가벼운 일광욕)</div>
-                    <div class="meta">유아 모래놀이 + 어르신은 그늘/카페 중심. 한낮 전 짧게.</div>
-                  </div>
-                </div>
-                <div class="pill">우천 시: 카페/쇼핑몰로 대체</div>
-              </div>
-
-              <div class="item">
-                <div class="row">
-                  <div class="time">12:00</div>
-                  <div class="desc">
-                    <div class="name">점심(현지식/한식/베트남 쌀국수 등)</div>
-                    <div class="meta">유아 메뉴(국물/밥) 가능한 곳 위주.</div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="item">
-                <div class="row">
-                  <div class="time">13:30</div>
-                  <div class="desc">
-                    <div class="name">숙소 휴식/낮잠</div>
-                    <div class="meta">어르신은 마사지(발/어깨) 정도만 가볍게.</div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="item">
-                <div class="row">
-                  <div class="time">16:00</div>
-                  <div class="desc">
-                    <div class="name">Long Son Pagoda + Nha Trang Cathedral(짧게)</div>
-                    <div class="meta">차량 하차 후 짧은 동선만. 무리하면 1곳만 선택.</div>
-                  </div>
-                </div>
-                <div class="pill">어르신 컨디션 낮으면 “카페 + 해변”으로 대체</div>
-              </div>
-
-              <div class="item">
-                <div class="row">
-                  <div class="time">18:30</div>
-                  <div class="desc">
-                    <div class="name">Nha Trang Night Market(야시장) + 저녁</div>
-                    <div class="meta">유아는 과자/과일 위주, 해산물은 익힘상태 확인. 소매치기 주의.</div>
-                  </div>
-                </div>
-              </div>
+              <div class="item"><div class="row"><div class="time">08:00</div><div class="desc"><div class="name">레갈리아 호텔 조식</div><div class="meta">여유 있는 아침</div></div></div></div>
+              <div class="item"><div class="row"><div class="time">10:00</div><div class="desc"><div class="name">담시장</div><div class="meta">기념품·간단 쇼핑</div></div></div></div>
+              <div class="item"><div class="row"><div class="time">12:00</div><div class="desc"><div class="name">점심 – 반미판 / 과일가게</div><div class="meta">65번 과일가게 또는 하나</div></div></div></div>
+              <div class="item"><div class="row"><div class="time">14:00</div><div class="desc"><div class="name">숙소 수영장 / 휴식</div><div class="meta">한낮 휴식</div></div></div></div>
+              <div class="item"><div class="row"><div class="time">15:00</div><div class="desc"><div class="name">헬렌 스파</div><div class="meta">가벼운 마사지</div></div></div></div>
+              <div class="item"><div class="row"><div class="time">18:00</div><div class="desc"><div class="name">저녁 – 목식당</div><div class="meta">현지 인기 식당</div></div></div></div>
+              <div class="item"><div class="row"><div class="time">20:00</div><div class="desc"><div class="name">롯데마트 쇼핑</div><div class="meta">간식·기념품</div></div></div></div>
             </div>
-
-            <div class="callout">
-              <strong>대체안</strong>
-              <ul class="list">
-                <li>비/바람 강함: 야시장은 짧게, 대신 실내 쇼핑/카페</li>
-                <li>어르신 피로: 사원/성당은 생략하고 저녁은 숙소 근처</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="hd"><h2>오늘의 장소(지도 탭에도 표시)</h2></div>
-          <div class="bd">
-            <div class="pill">Tran Phu Beach</div>
-            <div class="pill">Long Son Pagoda</div>
-            <div class="pill">Nha Trang Cathedral</div>
-            <div class="pill">Nha Trang Night Market</div>
-            <div class="note" style="margin-top:10px">* 숙소가 Tran Phu 라인(해변도로)이라면 이동 부담이 크게 줄어듭니다.</div>
           </div>
         </div>
       </div>
@@ -450,80 +465,18 @@
 
     <!-- Day 3 -->
     <section class="panel" id="d3">
-      <div class="grid">
+      <div class="grid one">
         <div class="card">
-          <div class="hd"><h2>2/24(화) — VinWonders(테마파크) 1일</h2><div class="note">강도: 중 (휴식/대기 고려)</div></div>
+          <div class="hd"><h2>2/24(화) — 체크아웃 + 유적 + 마사지</h2><div class="note">시간표 기준 반영</div></div>
           <div class="bd">
             <div class="timeline">
-              <div class="item">
-                <div class="row">
-                  <div class="time">09:00</div>
-                  <div class="desc">
-                    <div class="name">Vinpearl/VinWonders 이동(케이블카/페리)</div>
-                    <div class="meta">유아는 유모차/휴대용 선풍기/우비 준비. 어르신은 대기 줄 최소화.</div>
-                  </div>
-                </div>
-                <div class="pill">왕복 이동 포함: 하루 코어</div>
-              </div>
-
-              <div class="item">
-                <div class="row">
-                  <div class="time">10:00</div>
-                  <div class="desc">
-                    <div class="name">아쿠아리움/실내 구역(우선)</div>
-                    <div class="meta">한낮 더위 회피. 아이 컨디션/수면 타이밍 조절이 쉬움.</div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="item">
-                <div class="row">
-                  <div class="time">12:30</div>
-                  <div class="desc">
-                    <div class="name">점심(파크 내) + 휴식</div>
-                    <div class="meta">식사 후 30~60분은 무조건 앉아서 쉬기(어르신 필수).</div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="item">
-                <div class="row">
-                  <div class="time">14:00</div>
-                  <div class="desc">
-                    <div class="name">유아/가족 동선(키즈존/가벼운 라이드/쇼)</div>
-                    <div class="meta">무리한 스릴 라이드/긴 줄은 제외. 동선 짧게.</div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="item">
-                <div class="row">
-                  <div class="time">16:30</div>
-                  <div class="desc">
-                    <div class="name">리턴(케이블카/페리) → 숙소 휴식</div>
-                    <div class="meta">저녁은 숙소 근처(또는 룸서비스)로 단순화.</div>
-                  </div>
-                </div>
-              </div>
+              <div class="item"><div class="row"><div class="time">08:00</div><div class="desc"><div class="name">레갈리아 호텔 조식</div></div></div></div>
+              <div class="item"><div class="row"><div class="time">10:00</div><div class="desc"><div class="name">포나가르 사원</div></div></div></div>
+              <div class="item"><div class="row"><div class="time">12:00</div><div class="desc"><div class="name">레갈리아 체크아웃</div><div class="meta">점심 – 그릭 수블라키</div></div></div></div>
+              <div class="item"><div class="row"><div class="time">14:00</div><div class="desc"><div class="name">알마 리조트 체크인</div></div></div></div>
+              <div class="item"><div class="row"><div class="time">16:00</div><div class="desc"><div class="name">시내 마사지</div></div></div></div>
+              <div class="item"><div class="row"><div class="time">18:00</div><div class="desc"><div class="name">저녁 – 깜란 차라푸드</div></div></div></div>
             </div>
-
-            <div class="callout">
-              <strong>운영 팁(가족+어르신)</strong>
-              <ul class="list">
-                <li>입장권/이동수단은 가능한 사전구매(대기/줄 감소)</li>
-                <li>유아 낮잠은 유모차에서 “파크 내 휴식구역”으로 해결</li>
-                <li>어르신은 파크 내 동선 최소화(실내/그늘 위주)</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="hd"><h2>오늘의 장소(지도 탭에도 표시)</h2></div>
-          <div class="bd">
-            <div class="pill">VinWonders Nha Trang</div>
-            <div class="pill">Vinpearl Cable Car Station(또는 페리 선착장)</div>
-            <div class="note" style="margin-top:10px">* 케이블카 운영/대체수단(페리)은 시즌/정비에 따라 변동 가능하니 출발 전 확인 권장.</div>
           </div>
         </div>
       </div>
@@ -531,71 +484,16 @@
 
     <!-- Day 4 -->
     <section class="panel" id="d4">
-      <div class="grid">
+      <div class="grid one">
         <div class="card">
-          <div class="hd"><h2>2/25(수) — 머드스파 + 유적 + 선셋(가족친화)</h2><div class="note">강도: 중하</div></div>
+          <div class="hd"><h2>2/25(수) — 리조트 조식 + 마사지 + 선셋</h2><div class="note">시간표 기준 반영</div></div>
           <div class="bd">
             <div class="timeline">
-              <div class="item">
-                <div class="row">
-                  <div class="time">09:30</div>
-                  <div class="desc">
-                    <div class="name">I-Resort(또는 Thap Ba) 머드스파/온천</div>
-                    <div class="meta">유아용 풀/얕은 풀 존재. 어르신은 장시간 뜨거운 탕은 피하고 중간 휴식.</div>
-                  </div>
-                </div>
-                <div class="pill">2~3시간 코어</div>
-              </div>
-
-              <div class="item">
-                <div class="row">
-                  <div class="time">12:30</div>
-                  <div class="desc">
-                    <div class="name">점심 + 숙소 휴식(필수)</div>
-                    <div class="meta">머드 후에는 체력 저하가 올 수 있어 오후 일정 짧게.</div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="item">
-                <div class="row">
-                  <div class="time">16:00</div>
-                  <div class="desc">
-                    <div class="name">Po Nagar Cham Towers(짧게) → Hon Chong(노을)</div>
-                    <div class="meta">둘 다 차량 이동 + 짧은 체류 형태로 운영. 사진/풍경 중심.</div>
-                  </div>
-                </div>
-                <div class="pill">우천 시: Po Nagar만 짧게 또는 카페</div>
-              </div>
-
-              <div class="item">
-                <div class="row">
-                  <div class="time">19:00</div>
-                  <div class="desc">
-                    <div class="name">저녁(해산물/베트남식) + 조기 귀가</div>
-                    <div class="meta">다음날 늦은 출발이지만, 유아 리듬 유지가 중요.</div>
-                  </div>
-                </div>
-              </div>
+              <div class="item"><div class="row"><div class="time">08:00</div><div class="desc"><div class="name">알마 리조트 조식</div></div></div></div>
+              <div class="item"><div class="row"><div class="time">11:00</div><div class="desc"><div class="name">시내 마사지</div></div></div></div>
+              <div class="item"><div class="row"><div class="time">12:00</div><div class="desc"><div class="name">점심 – 반미 또는 반세오</div></div></div></div>
+              <div class="item"><div class="row"><div class="time">18:00</div><div class="desc"><div class="name">저녁 – Cam Lâm Food</div></div></div></div>
             </div>
-
-            <div class="callout">
-              <strong>선택지</strong>
-              <ul class="list">
-                <li><strong>I-Resort</strong>: 가족 풀/리조트형(유아 친화)</li>
-                <li><strong>Thap Ba</strong>: 전통 머드스파 느낌(시내와 가까운 편)</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="hd"><h2>오늘의 장소(지도 탭에도 표시)</h2></div>
-          <div class="bd">
-            <div class="pill">I-Resort Nha Trang</div>
-            <div class="pill">Thap Ba Mud Bath(대체)</div>
-            <div class="pill">Po Nagar Cham Towers</div>
-            <div class="pill">Hon Chong Promontory</div>
           </div>
         </div>
       </div>
@@ -603,29 +501,16 @@
 
     <!-- Day 5 -->
     <section class="panel" id="d5">
-      <div class="grid">
+      <div class="grid one">
         <div class="card">
-          <div class="hd"><h2>2/26(목) — 나트랑 23:20 출발</h2><div class="note">BX 788 / 심야 출국</div></div>
+          <div class="hd"><h2>2/26(목) — 리조트 조식 + 귀국 준비</h2><div class="note">시간표 기준 반영</div></div>
           <div class="bd">
             <div class="timeline">
-              <div class="item">
-                <div class="row">
-                  <div class="time">18:00</div>
-                  <div class="desc">
-                    <div class="name">이른 저녁 + 공항 이동</div>
-                    <div class="meta">출발 2~3시간 전 공항 도착 목표</div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="row">
-                  <div class="time">23:20</div>
-                  <div class="desc">
-                    <div class="name">나트랑 출발</div>
-                    <div class="meta">BX 788</div>
-                  </div>
-                </div>
-              </div>
+              <div class="item"><div class="row"><div class="time">08:00</div><div class="desc"><div class="name">알마 리조트 조식</div></div></div></div>
+              <div class="item"><div class="row"><div class="time">12:00</div><div class="desc"><div class="name">점심 – 반미 또는 반세오</div></div></div></div>
+              <div class="item"><div class="row"><div class="time">18:00</div><div class="desc"><div class="name">레이트 체크아웃</div><div class="meta">근처에서 저녁 식사</div></div></div></div>
+              <div class="item"><div class="row"><div class="time">21:20</div><div class="desc"><div class="name">공항 도착</div></div></div></div>
+              <div class="item"><div class="row"><div class="time">23:20</div><div class="desc"><div class="name">나트랑 출발 (BX 788)</div></div></div></div>
             </div>
           </div>
         </div>
@@ -634,7 +519,7 @@
 
     <!-- Day 6 -->
     <section class="panel" id="d6">
-      <div class="grid">
+      <div class="grid one">
         <div class="card">
           <div class="hd"><h2>2/27(금) — 인천 06:55 도착 → 문정동 귀가</h2><div class="note">BX 788 / 귀국</div></div>
           <div class="bd">
@@ -680,62 +565,113 @@
       </div>
     </section>
 
-    <!-- Map Tab -->
-    <section class="panel" id="transport">
+    <!-- Dam Market Price -->
+    <section class="panel" id="damprice">
       <div class="card">
-        <div class="hd"><h2>항공편 · 주요 이동수단</h2><div class="note">실제 탑승 기준 / 가족·유아 동선 고려</div></div>
-        <div class="bd">
-          <div class="card" style="box-shadow:none; margin-bottom:14px">
-            <div class="hd"><h2>국제선 항공편</h2></div>
-            <div class="bd">
-              <table style="width:100%; border-collapse:collapse; font-size:13px">
-                <thead>
-                  <tr style="background:#f5f7fb">
-                    <th style="padding:8px; border:1px solid var(--border)">출발일자</th>
-                    <th style="padding:8px; border:1px solid var(--border)">구간</th>
-                    <th style="padding:8px; border:1px solid var(--border)">시간</th>
-                    <th style="padding:8px; border:1px solid var(--border)">편명</th>
-                    <th style="padding:8px; border:1px solid var(--border)">좌석</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td style="padding:8px; border:1px solid var(--border)">2026-02-22(일)</td>
-                    <td style="padding:8px; border:1px solid var(--border)">서울(인천) → 나트랑</td>
-                    <td style="padding:8px; border:1px solid var(--border)">19:00 → 22:20</td>
-                    <td style="padding:8px; border:1px solid var(--border)">BX 787</td>
-                    <td style="padding:8px; border:1px solid var(--border)">5석</td>
-                  </tr>
-                  <tr>
-                    <td style="padding:8px; border:1px solid var(--border)">2026-02-26(목)</td>
-                    <td style="padding:8px; border:1px solid var(--border)">나트랑 → 서울(인천)</td>
-                    <td style="padding:8px; border:1px solid var(--border)">23:20 → 06:55(+1)</td>
-                    <td style="padding:8px; border:1px solid var(--border)">BX 788</td>
-                    <td style="padding:8px; border:1px solid var(--border)">5석</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
+        <div class="hd"><h2>담시장 시세표 (VND 기준)</h2><div class="note">사용자 제공 최신 데이터 기준 · 동일 카테고리 병합 표시</div></div>
+        <div class="bd" style="overflow-x:auto">
+          <table style="width:100%; border-collapse:collapse; font-size:13px">
+            <thead>
+              <tr style="background:#f5f7fb">
+                <th style="border:1px solid var(--border); padding:8px">카테고리</th>
+                <th style="border:1px solid var(--border); padding:8px">종류</th>
+                <th style="border:1px solid var(--border); padding:8px">최저가 (동)</th>
+                <th style="border:1px solid var(--border); padding:8px">최고가 (동)</th>
+                
+                <th style="border:1px solid var(--border); padding:8px">기준일 / 출처</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- 속옷 및 패션소품 -->
+              <tr>
+                <td rowspan="12" style="border:1px solid var(--border); padding:8px; font-weight:800; vertical-align:top">속옷 및 패션소품 (언더웨어, 양말, 선글라스, 진주 액세서리 등)</td>
+                <td style="border:1px solid var(--border); padding:8px">질러팬티/심리스 팬티 (여성)</td>
+                <td style="border:1px solid var(--border); padding:8px; text-align:right">30,000</td>
+                <td style="border:1px solid var(--border); padding:8px; text-align:right">40,000</td>
+                <td style="border:1px solid var(--border); padding:8px">2025년 10월 기준 여행자 후기</td></td>
+              </tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">질러/심리스 브라 (여성)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">50,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">80,000</td><td style="border:1px solid var(--border); padding:8px">2025년 하반기 현지 시세</td></td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">캘빈클라인 브래지어 (여성)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">70,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">100,000</td><td style="border:1px solid var(--border); padding:8px">2025년 하반기 기준</td></td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">남성 캘빈클라인 팬티 (드로즈)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">30,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">40,000</td><td style="border:1px solid var(--border); padding:8px">2025년 10월 (10장 세트 약 300,000동)</td></td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">캘빈클라인 속옷 세트 (상하의)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">80,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">120,000</td><td style="border:1px solid var(--border); padding:8px">2025년 하반기 기준</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">나이키 양말 (운동양말 10켤레)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">100,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">120,000</td><td style="border:1px solid var(--border); padding:8px">2025년 10월 기준 – 12켤레 120,000동 딜</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">선글라스 (일반 디자인)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">50,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">80,000</td><td style="border:1px solid var(--border); padding:8px">2025년 10월 블로그 기준</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">진주 목걸이 (한 알 펜던트)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">80,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">150,000</td><td style="border:1px solid var(--border); padding:8px">2025년 1월 기준</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">진주 목걸이 (여러 알)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">150,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">250,000</td><td style="border:1px solid var(--border); padding:8px">2025년 1월 기준</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">진주 귀걸이</td><td style="border:1px solid var(--border); padding:8px; text-align:right">100,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">200,000</td><td style="border:1px solid var(--border); padding:8px">2025년 1월 기준</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">진주 팔찌</td><td style="border:1px solid var(--border); padding:8px; text-align:right">80,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">150,000</td><td style="border:1px solid var(--border); padding:8px">2025년 1월 기준</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">진주 반지</td><td style="border:1px solid var(--border); padding:8px; text-align:right">80,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">100,000</td><td style="border:1px solid var(--border); padding:8px">2025년 1월 기준</td></tr>
 
-          <div class="card" style="box-shadow:none">
-            <div class="hd"><h2>현지 이동수단 가이드</h2></div>
-            <div class="bd">
-              <ul class="list">
-                <li><strong>공항 ↔ 숙소</strong>: 전용차량 또는 Grab SUV 권장 (유아 카시트 필요 시 사전예약)</li>
-                <li><strong>시내 이동</strong>: Grab 택시 중심, 단거리 위주 운영</li>
-                <li><strong>VinWonders</strong>: 케이블카 또는 페리 (유모차 동반 가능 여부 현장 확인)</li>
-                <li><strong>머드스파/외곽</strong>: 왕복 차량 포함 패키지 이용 시 체력 소모 최소화</li>
-              </ul>
-              <div class="callout">
-                <strong>운영 팁</strong>
-                <ul class="list">
-                  <li>출발일(2/26) 밤 비행 → 오후 일정 최소화, 저녁은 공항 이동 중심</li>
-                  <li>어르신/유아 동반 시 오토바이 이동은 제외</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+              <!-- 라탄 제품 및 기념품 -->
+              <tr>
+                <td rowspan="10" style="border:1px solid var(--border); padding:8px; font-weight:800; vertical-align:top">라탄 제품 및 기념품 (가방, 모자, 자석 등)</td>
+                <td style="border:1px solid var(--border); padding:8px">라탄백 (라탄 가방, 일반)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">100,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">200,000</td><td style="border:1px solid var(--border); padding:8px">2025년 10월 기준</td>
+              </tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">라탄 모자 (밀짚모 등)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">70,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">100,000</td><td style="border:1px solid var(--border); padding:8px">2025년 10월 기준</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">숄더 라탄가방 (큰 사이즈)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">150,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">250,000</td><td style="border:1px solid var(--border); padding:8px">2025년 하반기 기준</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">스마일 라탄가방 (디자인 라탄)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">170,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">200,000</td><td style="border:1px solid var(--border); padding:8px">2025년 하반기 기준</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">작은 니트 가방 (손뜨개 가방)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">80,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">120,000</td><td style="border:1px solid var(--border); padding:8px">2025년 하반기 기준</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">라탄 냄비받침대</td><td style="border:1px solid var(--border); padding:8px; text-align:right">40,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">50,000</td><td style="border:1px solid var(--border); padding:8px">2026년 1월 여행후기</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">열쇠고리 키링 (기념 열쇠고리)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">20,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">30,000</td><td style="border:1px solid var(--border); padding:8px">2025년 하반기 기준</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">마그넷 (냉장고 자석)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">20,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">30,000</td><td style="border:1px solid var(--border); padding:8px">2025년 기준</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">라부부 인형 (장난감)**</td><td style="border:1px solid var(--border); padding:8px; text-align:right">100,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">110,000</td><td style="border:1px solid var(--border); padding:8px">2025년 11월 현지 구매</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">거북이 줄자 (소형 줄자)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">30,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">30,000</td><td style="border:1px solid var(--border); padding:8px">2024년 9월 여행후기</td></tr>
+
+              <!-- 의류 – 일반 -->
+              <tr>
+                <td rowspan="10" style="border:1px solid var(--border); padding:8px; font-weight:800; vertical-align:top">의류 – 일반 의류 및 패션 (원피스, 티셔츠 등)</td>
+                <td style="border:1px solid var(--border); padding:8px">원피스 (여성 원피스)</td>
+                <td style="border:1px solid var(--border); padding:8px; text-align:right">80,000</td>
+                <td style="border:1px solid var(--border); padding:8px; text-align:right">120,000</td>
+                <td style="border:1px solid var(--border); padding:8px">2025년 3월 기준</td>
+              </tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">투피스 (여성 세트업)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">80,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">150,000</td><td style="border:1px solid var(--border); padding:8px">2025년 하반기 추정</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">민무늬 원피스 (무늬 없는 원피스)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">100,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">110,000</td><td style="border:1px solid var(--border); padding:8px">2025년 하반기 기준</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">하와이안 상하의 세트</td><td style="border:1px solid var(--border); padding:8px; text-align:right">80,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">100,000</td><td style="border:1px solid var(--border); padding:8px">2025년 11월 기준</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">남성 티셔츠 (일반)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">60,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">100,000</td><td style="border:1px solid var(--border); padding:8px">2025년 7월 구매 가격</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">일반 반바지 (남성용)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">50,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">80,000</td><td style="border:1px solid var(--border); padding:8px">2025년 하반기 기준</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">티+반바지 세트 (남성 셋업)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">100,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">150,000</td><td style="border:1px solid var(--border); padding:8px">2025년 하반기 기준</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">레깅스 (여성용)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">100,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">130,000</td><td style="border:1px solid var(--border); padding:8px">2025년 하반기 기준</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">코끼리 반바지 (관광 바지)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">50,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">70,000</td><td style="border:1px solid var(--border); padding:8px">2025년 1월 기준</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">코끼리 긴바지 (관광 바지 긴것)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">60,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">80,000</td><td style="border:1px solid var(--border); padding:8px">2025년 1월 기준</td></tr>
+
+              <!-- 의류 – 스포츠/브랜드 -->
+              <tr>
+                <td rowspan="12" style="border:1px solid var(--border); padding:8px; font-weight:800; vertical-align:top">의류 – 스포츠/브랜드 의류 (나이키, 아디다스 등 짝퉁)</td>
+                <td style="border:1px solid var(--border); padding:8px">나이키 반팔 티셔츠</td>
+                <td style="border:1px solid var(--border); padding:8px; text-align:right">80,000</td>
+                <td style="border:1px solid var(--border); padding:8px; text-align:right">100,000</td>
+                <td style="border:1px solid var(--border); padding:8px">2025년 10월 담시장 여행자 후기</td>
+              </tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">나이키 긴팔 티셔츠</td><td style="border:1px solid var(--border); padding:8px; text-align:right">100,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">130,000</td><td style="border:1px solid var(--border); padding:8px">2025년 10월 담시장 후기</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">나이키 반바지</td><td style="border:1px solid var(--border); padding:8px; text-align:right">80,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">100,000</td><td style="border:1px solid var(--border); padding:8px">2025년 10월 담시장 후기</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">나이키 바람막이 (경량 재킷)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">120,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">180,000</td><td style="border:1px solid var(--border); padding:8px">2025년 하반기 현지 시세</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">나이키 후드티</td><td style="border:1px solid var(--border); padding:8px; text-align:right">150,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">200,000</td><td style="border:1px solid var(--border); padding:8px">2025년 하반기 현지 시세</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">나이키 모자 (캡/볼캡)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">70,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">80,000</td><td style="border:1px solid var(--border); padding:8px">2025년 10월 담시장 후기</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">나이키 가방 (에코백 등)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">150,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">200,000</td><td style="border:1px solid var(--border); padding:8px">2025년 하반기 현지 시세</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">아디다스 반팔 티셔츠</td><td style="border:1px solid var(--border); padding:8px; text-align:right">120,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">150,000</td><td style="border:1px solid var(--border); padding:8px">2025년 10월 담시장 후기</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">라코스테 카라티 (반팔, 고퀄)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">130,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">200,000</td><td style="border:1px solid var(--border); padding:8px">2025년 하반기 고급라인 시세</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">브랜드 티셔츠 (기타 브랜드)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">100,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">120,000</td><td style="border:1px solid var(--border); padding:8px">2025년 하반기 담시장 시세</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">브랜드 반바지 (기타 브랜드)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">100,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">150,000</td><td style="border:1px solid var(--border); padding:8px">2025년 하반기 담시장 시세</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">브랜드 셋업 (상의+하의 세트)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">170,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">200,000</td><td style="border:1px solid var(--border); padding:8px">2025년 하반기 담시장 시세</td></tr>
+
+              <!-- 신발 및 기타 품목 -->
+              <tr>
+                <td rowspan="8" style="border:1px solid var(--border); padding:8px; font-weight:800; vertical-align:top">신발 및 기타 품목 (신발, 슬리퍼, 캐리어 등)</td>
+                <td style="border:1px solid var(--border); padding:8px">크록스 샌들 (기본형)</td>
+                <td style="border:1px solid var(--border); padding:8px; text-align:right">100,000</td>
+                <td style="border:1px solid var(--border); padding:8px; text-align:right">150,000</td>
+                <td style="border:1px solid var(--border); padding:8px">2025년 하반기 담시장 여행자 후기</td>
+              </tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">크록스 샌들 (디자인/컬러)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">150,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">180,000</td><td style="border:1px solid var(--border); padding:8px">2025년 하반기 담시장 여행자 후기</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">크록스 지비츠 (장식, 12개)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">40,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">50,000</td><td style="border:1px solid var(--border); padding:8px">2025년 하반기 담시장 여행자 후기</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">슬리퍼 (샌들류 일반)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">50,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">120,000</td><td style="border:1px solid var(--border); padding:8px">2025년 하반기 담시장 여행자 후기</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">나이키 운동화 (운동화 짝퉁)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">300,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">400,000</td><td style="border:1px solid var(--border); padding:8px">2025년 하반기 담시장 여행자 후기</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">캐리어 20인치 (기내용 가방)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">250,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">400,000</td><td style="border:1px solid var(--border); padding:8px">2025년 하반기 담시장 여행자 후기</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">캐리어 24인치 (중형)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">350,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">450,000</td><td style="border:1px solid var(--border); padding:8px">2025년 하반기 담시장 여행자 후기</td></tr>
+              <tr><td style="border:1px solid var(--border); padding:8px">캐리어 28인치 (대형)</td><td style="border:1px solid var(--border); padding:8px; text-align:right">450,000</td><td style="border:1px solid var(--border); padding:8px; text-align:right">500,000</td><td style="border:1px solid var(--border); padding:8px">2025년 하반기 담시장 여행자 후기</td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
